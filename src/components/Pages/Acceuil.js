@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Acceuil = () => {
-  return <h1>Acceuil Page</h1>;
+  return  (
+    <div className="min-h-screen bg-blue-100 flex items-center justify-center">
+      <h1 className="text-4xl font-bold text-blue-600">Hello, Tailwind CSS!</h1>
+    </div>
+  );
 };
 
 export default Acceuil;
