@@ -1,7 +1,8 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { useAxiosPost } from '../../hooks/useAxiosPost';
 import { useNavigate } from 'react-router-dom';
+import { setToken } from '../../utils/jwt';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Login = () => {
     try {
       const response = await executePost(apiUrl, props);
       if (response) {
-        console.log(response);
+        setToken(response);
         return navigate('/dashboard');
       }
     } catch (error) {

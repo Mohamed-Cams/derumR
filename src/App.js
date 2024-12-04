@@ -8,6 +8,7 @@ import Transaction from "./components/Pages/Transaction"
 import Transfert from './components/Pages/Transfert';
 import Profile from "./components/Pages/Profile";
 import Dashboard from "./components/Pages/Dashboard"
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -17,15 +18,15 @@ function App() {
       </nav>
       <Routes>
 
-        <Route path="/acceuil" element={<Acceuil />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/depot" element={<Depot />} />
+        <Route path="/acceuil" element={<ProtectedRoute><Acceuil /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/depot" element={<ProtectedRoute><Depot /></ProtectedRoute>} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/register" element={<Register />} />
-        <Route path="/retrait" element={<Retrait />} />
-        <Route path="/transaction" element={<Transaction />} />
-        <Route path="/transfert" element={<Transfert />} />
+        <Route path="/retrait" element={<ProtectedRoute><Retrait /></ProtectedRoute>} />
+        <Route path="/transaction" element={<ProtectedRoute><Transaction /></ProtectedRoute>} />
+        <Route path="/transfert" element={<ProtectedRoute><Transfert /></ProtectedRoute>} />
         <Route path="*" element={<h1>404: Page Not Found</h1>} />
 
       </Routes>
