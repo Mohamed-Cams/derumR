@@ -6,7 +6,7 @@ import { useAxiosPost } from '../../hooks/useAxiosPost';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { data, error, executePost } = useAxiosPost();
+  const {  executePost } = useAxiosPost();
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       prenom: '',
@@ -19,14 +19,17 @@ const Register = () => {
   })
 
 
-  const onSubmit = (props) => {
-    const response = executePost('', props);
-    if (response && response.status === 200) {
-      return navigate('/login');
+  const onSubmit = async (props) => {
+    const apiUrl = process.env.REACT_APP_API_BASE_URL + '/auth/register';
+    try {
+      const response = await executePost(apiUrl, props);
+      if (response) {
+        return navigate('/login');
+      } 
+    } catch (error) {
+      console.error('Une erreur est survenue', error);
     }
-
   }
-
 
 
   return (
